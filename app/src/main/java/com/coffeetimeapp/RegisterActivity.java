@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+
 public class RegisterActivity extends Activity {
     Button btndaftar;
     EditText namaText, emailText, phoneText, passwordText;
@@ -47,7 +49,7 @@ public class RegisterActivity extends Activity {
         passwordText = findViewById(R.id.password);
     }
 
-    private void registerUser(){
+    public void registerUserAuth(View view){
         String nama = namaText.getText().toString();
         String email = emailText.getText().toString();
         String phone = phoneText.getText().toString();
@@ -73,18 +75,27 @@ public class RegisterActivity extends Activity {
             return;
         }
 
+        if (password.length() < 8){
+            //firebase auth cant create user with password < 8 character
+            //firebase auth cant create user with same email, so if you wanna re-create user with exiest email,
+            //please delete user data in firebase auth
+            Toast.makeText(this, "Password tidak boleh kurang dari 8 character", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        //dismis dialog
         progressDialog.setMessage("Register User..");
         progressDialog.show();
 
+        //call method for create user in firebase auth
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Registrasi sukses", Toast.LENGTH_SHORT).show();
-                            finish();
-                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(intent);
+
+                            //if succes, then save data user in firebase database
+                            registerSaveToDatabase(firebaseAuth.getCurrentUser().getUid());
                         }else {
                             Toast.makeText(RegisterActivity.this, "Registrasi gagal",Toast.LENGTH_SHORT).show();
                         }
@@ -92,20 +103,46 @@ public class RegisterActivity extends Activity {
                 });
     }
 
-    public void register(View view) {
-
-        registerUser();
+    public void registerSaveToDatabase(String userID) {
 
         String nama = namaText.getText().toString();
         String email = emailText.getText().toString();
         String phone = phoneText.getText().toString();
         String password = passwordText.getText().toString();
 
-        ref.child("user").push().setValue(new User(nama,email,phone,password)).addOnSuccessListener(this, new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
+        ref = FirebaseDatabase.getInstance().getReference().child("user").child(userID);
+        HashMap<String,String> userMap = new HashMap<>();
+        userMap.put("nama",nama);
+        userMap.put("email",email);
+        userMap.put("phone",phone);
+        userMap.put("password",password);
+        userMap.put("uid",userID);
 
+        ref.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    //data user succes save in database
+                    //then Go to mainActivity
+                    Toast.makeText(RegisterActivity.this, "Registrasi sukses", Toast.LENGTH_SHORT).show();
+                    finish();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(RegisterActivity.this, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+        /*ref.child("user").push().setValue(new User(nama,email,phone,password)).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(RegisterActivity.this, "Registrasi sukses", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });*/
     }
 }

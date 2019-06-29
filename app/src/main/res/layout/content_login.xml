@@ -99,6 +99,7 @@
                 android:background="@color/colorPrimary"
                 android:foreground="?attr/selectableItemBackground"
                 android:text="Daftar Akun"
+                android:onClick="register"
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </LinearLayout>

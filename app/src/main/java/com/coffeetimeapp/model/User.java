@@ -8,14 +8,14 @@ public class User {
         this.password = password;
     }
 
-    private String id, nama, email, noHp, password;
+    private String uid, nama, email, noHp, password;
 
     public String getId() {
-        return id;
+        return uid;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.uid = id;
     }
 
     public String getNama() {
