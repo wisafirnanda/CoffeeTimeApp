@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends Activity {
 
     Button btnlogin;
-    EditText email, password;
+    EditText emailText, passwordText;
 
     //fIREBASE
     private FirebaseAuth mAuth;
@@ -43,17 +43,17 @@ public class LoginActivity extends Activity {
 
         btnlogin = findViewById(R.id.btnlogin);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+        emailText = findViewById(R.id.email);
+        passwordText = findViewById(R.id.password);
     }
 
     public void login(View view) {
-        final String emailText = email.getText().toString();
-        String passwordText = password.getText().toString();
+        final String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
 
         //create valiadate at here
 
-        mAuth.signInWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Toast.makeText(LoginActivity.this,"Login with email "+emailText+" is Failure",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Login with email "+email+" is Failure",Toast.LENGTH_SHORT).show();
 
                         }
                     });
