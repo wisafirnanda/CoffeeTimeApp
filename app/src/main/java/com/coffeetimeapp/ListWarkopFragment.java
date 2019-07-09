@@ -1,73 +1,112 @@
 package com.coffeetimeapp;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.coffeetimeapp.adapter.ListWarkopAdapter;
-import com.coffeetimeapp.model.ListWarkopModel;
+import com.coffeetimeapp.model.Warkop;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
+public class ListWarkopFragment extends Fragment {
 
-/**
- * Created by wahyu on 15/11/16.
- */
+    private FirebaseDatabase checkindatabase;
+    private FirebaseDatabase warkopdatabase;
+    private FirebaseRecyclerAdapter<Warkop,UserviewHolder> adapter;
+    private TextView Notifnull;
+    private RecyclerView recyclerView;
 
-@SuppressLint("ValidFragment")
-public class ListWarkopFragment extends Fragment implements ListWarkopClickListener{
-    int wizard_page_position;
+    public ListWarkopFragment() {
 
-    public ListWarkopFragment(int position) {
-        this.wizard_page_position = position;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        int layout_id = R.layout.fragmen_list_warkop;
-        View view = inflater.inflate(layout_id, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragmen_list_warkop, container, false);
+        recyclerView = rootView.findViewById(R.id.listview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
 
-        ArrayList<ListWarkopModel> rowListItem = getAllItemList();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        Query query = FirebaseDatabase.getInstance().getReference().child("warkop");
+        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Warkop>()
+                .setQuery(query, Warkop.class)
+                .setLifecycleOwner(getActivity())
+                .build();
+            if (getActivity() != null){
+                adapter = new FirebaseRecyclerAdapter<Warkop, UserviewHolder>(options) {
+                    @NonNull
+                    @Override
+                    public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail_warkop, parent,false);
+                        return new UserviewHolder(view);
+                    }
 
-        RecyclerView rView = (RecyclerView)view.findViewById(R.id.recyclerView);
-        rView.setHasFixedSize(true);
-        rView.setLayoutManager(layoutManager);
-        rView.setNestedScrollingEnabled(false);
-        rView.setHasFixedSize(false);
+                    @Override
+                    protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
+                        holder.setnama_warkop(model.getnama_warkop());
+                        holder.setnama_pemilik(model.getnama_pemilik());
+                        holder.setcp_warkop(model.getcp_warkop());
+                        holder.setwaktu_buka(model.getwaktu_buka());
+                        holder.setalamat_warkop(model.getalamat_warkop());
 
-        ListWarkopAdapter rcAdapter = new ListWarkopAdapter(getActivity(), rowListItem);
-        rView.setAdapter(rcAdapter);
-        rcAdapter.setClickListener(this);
-        return view;
-    }
+                        final String uid = model.getId();
+                    }
+                }
+            }
+        }
 
-    private ArrayList<ListWarkopModel> getAllItemList(){
-        ArrayList<ListWarkopModel> allItems = new ArrayList<ListWarkopModel>();
-        ListWarkopModel dt;
+    public class UserviewHolder extends RecyclerView.ViewHolder {
+        View mView;
+        TextView namawarkop, namapemilik, cpwarkop, waktubuka, alamatwarkop;
 
-        dt = new ListWarkopModel("Sky Blue Dress","192","ecommerce/style-9/Ecommerce-9-img-1.jpg");
-        allItems.add(dt);
-        dt = new ListWarkopModel("Velcro Sneaker White","225","ecommerce/style-9/Ecommerce-9-img-2.jpg");
-        allItems.add(dt);
+        public UserviewHolder(View itemView) {
+            super(itemView);
+            mView = itemView;
+            namawarkop = mView.findViewById(R.id.nama_warkop);
+            namapemilik = mView.findViewById(R.id.nama_pemilik);
+            cpwarkop = mView.findViewById(R.id.cp_warkop);
+            waktubuka = mView.findViewById(R.id.waktu_buka);
+            alamatwarkop = mView.findViewById(R.id.alamat_warkop);
+        }
 
-        dt = new ListWarkopModel("Sky Blue Dress","192","ecommerce/style-9/Ecommerce-9-img-1.jpg");
-        allItems.add(dt);
-        dt = new ListWarkopModel("Velcro Sneaker White","225","ecommerce/style-9/Ecommerce-9-img-2.jpg");
-        allItems.add(dt);
+        public void setnama_warkop(String nama_warkop){
+            namawarkop.setText(nama_warkop);
+        }
 
-        return  allItems;
-    }
+        public void setnama_pemilik(String nama_pemilik) {
+           namapemilik.setText(nama_pemilik);
+        }
 
-    @Override
-    public void itemClicked(View view, int position) {
-        int num = position + 1;
-        Toast.makeText(getActivity(), "Position " + num + " clicked!", Toast.LENGTH_SHORT).show();
+        public void setcp_warkop(String cp_warkop){
+            cpwarkop.setText(cp_warkop);
+        }
+
+        public void setwaktu_buka(String waktu_buka) {
+            waktubuka.setText(waktu_buka);
+        }
+
+        public void setalamat_warkop(String alamat_warkop) {
+            alamatwarkop.setText(alamat_warkop);
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+            adapter.startListening();
+        }
+
+        @Override
+        public void onStop() {
+            super.onStop();
+            adapter.stopListening();
+        }
     }
 }
