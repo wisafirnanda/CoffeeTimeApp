@@ -1,6 +1,7 @@
 package com.coffeetimeapp.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.coffeetimeapp.BuildConfig;
 import com.coffeetimeapp.ListWarkopClickListener;
 import com.coffeetimeapp.R;
 import com.coffeetimeapp.model.ListWarkopModel;
@@ -80,6 +80,11 @@ public class ListWarkopAdapter extends RecyclerView.Adapter<ListWarkopAdapter.It
     }
 
     @Override
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+
+    }
+
+    /* @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Glide.with(context)
                 .load(BuildConfig.IMAGE_URL + dataList.get(position).getImageUrl())
@@ -87,7 +92,7 @@ public class ListWarkopAdapter extends RecyclerView.Adapter<ListWarkopAdapter.It
                 .centerCrop()
                 .into(holder.image);
         holder.title.setText(dataList.get(position).getTitle());
-    }
+    } */
 
     @Override
     public int getItemCount() {

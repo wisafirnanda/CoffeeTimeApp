@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnbiji, btnbubuk, btnkopijadi;
     private FloatingActionButton fab;
 
-    //fIREBASE
+    //FIREBASE
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mUserRef;
@@ -152,4 +152,8 @@ public class MainActivity extends AppCompatActivity {
         sendToLogin();
     }
 
+    public void terbaru(View view) {
+        Intent startIntent = new Intent(MainActivity.this, TambahWarkopActivity.class);
+        startActivity(startIntent);
+    }
 }

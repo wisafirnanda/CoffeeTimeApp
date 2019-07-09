@@ -7,13 +7,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".RegisterActivity"
-        tools:showIn="@layout/activity_register"
-        android:background="#eee">
+        tools:showIn="@layout/activity_register">
 
         <android.support.v7.widget.CardView
             android:id="@+id/card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="530dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp">
 
@@ -25,7 +24,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="80dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="center"
                     android:text="Daftar Akun Baru"
@@ -105,12 +104,24 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="20dp"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/colorPrimary"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="registerUserAuth"
                     android:text="Daftar"
                     android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:onClick="registerUserAuth"/>
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/masuk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="30dp"
+                    android:onClick="masuk"
+                    android:text="Sudah punya akun? Masuk"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </RelativeLayout>

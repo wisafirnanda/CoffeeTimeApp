@@ -2,6 +2,11 @@ package com.coffeetimeapp.model;
 
 public class Warkop {
 
+
+    private String id, nama_warkop, nama_pemilik, cp_warkop, alamat_warkop, waktu_buka, menu;
+    private Double longitude, latitude;
+
+
     public Warkop (String nama_warkop, String nama_pemilik, String cp_warkop, String alamat_warkop, String waktu_buka, String menu) {
         this.nama_warkop = nama_warkop;
         this.nama_pemilik = nama_pemilik;
@@ -10,8 +15,6 @@ public class Warkop {
         this.waktu_buka = waktu_buka;
         this.menu = menu;
     }
-    private String id, nama_warkop, nama_pemilik, cp_warkop, alamat_warkop, waktu_buka, menu;
-    private Double longitude, latitude;
 
     public String getId() {
         return id;

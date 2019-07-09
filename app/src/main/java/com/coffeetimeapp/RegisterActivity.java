@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,7 @@ import java.util.HashMap;
 public class RegisterActivity extends Activity {
     Button btndaftar;
     EditText namaText, emailText, phoneText, passwordText;
+    TextView masuk;
 
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -40,6 +42,7 @@ public class RegisterActivity extends Activity {
         progressDialog = new ProgressDialog(this);
 
         btndaftar = findViewById(R.id.btndaftar);
+        masuk = findViewById(R.id.masuk);
 
         namaText = findViewById(R.id.nama);
         emailText = findViewById(R.id.email);
@@ -142,5 +145,10 @@ public class RegisterActivity extends Activity {
 
             }
         });*/
+    }
+
+    public void masuk(View view) {
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }
