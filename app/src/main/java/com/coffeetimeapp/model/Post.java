@@ -3,7 +3,7 @@ package com.coffeetimeapp.model;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public static class Post {
+public  class Post {
 
     public String author;
     public String title;

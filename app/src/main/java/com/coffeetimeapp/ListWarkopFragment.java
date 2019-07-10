@@ -20,7 +20,7 @@ public class ListWarkopFragment extends Fragment {
 
     private FirebaseDatabase checkindatabase;
     private FirebaseDatabase warkopdatabase;
-    private FirebaseRecyclerAdapter<Warkop,UserviewHolder> adapter;
+    private FirebaseRecyclerAdapter<Warkop, UserviewHolder> adapter;
     private TextView Notifnull;
     private RecyclerView recyclerView;
 
@@ -40,28 +40,31 @@ public class ListWarkopFragment extends Fragment {
                 .setQuery(query, Warkop.class)
                 .setLifecycleOwner(getActivity())
                 .build();
-            if (getActivity() != null){
-                adapter = new FirebaseRecyclerAdapter<Warkop, UserviewHolder>(options) {
-                    @NonNull
-                    @Override
-                    public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail_warkop, parent,false);
-                        return new UserviewHolder(view);
-                    }
-
-                    @Override
-                    protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
-                        holder.setnama_warkop(model.getnama_warkop());
-                        holder.setnama_pemilik(model.getnama_pemilik());
-                        holder.setcp_warkop(model.getcp_warkop());
-                        holder.setwaktu_buka(model.getwaktu_buka());
-                        holder.setalamat_warkop(model.getalamat_warkop());
-
-                        final String uid = model.getId();
-                    }
+        if (getActivity() != null) {
+            adapter = new FirebaseRecyclerAdapter<Warkop, UserviewHolder>(options) {
+                @NonNull
+                @Override
+                public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail_warkop, parent, false);
+                    return new UserviewHolder(view);
                 }
-            }
+
+                @Override
+                protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
+                    holder.setnama_warkop(model.getnama_warkop());
+                    holder.setnama_pemilik(model.getnama_pemilik());
+                    holder.setcp_warkop(model.getcp_warkop());
+                    holder.setwaktu_buka(model.getwaktu_buka());
+                    holder.setalamat_warkop(model.getalamat_warkop());
+
+                    final String uid = model.getId();
+                }
+            };
         }
+
+        return rootView;
+    }
+
 
     public class UserviewHolder extends RecyclerView.ViewHolder {
         View mView;
@@ -97,16 +100,17 @@ public class ListWarkopFragment extends Fragment {
             alamatwarkop.setText(alamat_warkop);
         }
 
-        @Override
-        public void onStart() {
-            super.onStart();
-            adapter.startListening();
-        }
 
-        @Override
-        public void onStop() {
-            super.onStop();
-            adapter.stopListening();
-        }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
