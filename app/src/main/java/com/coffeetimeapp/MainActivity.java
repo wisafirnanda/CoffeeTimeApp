@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mUserRef;
     private FirebaseUser mUser;
 
-    ViewFlipper v_flipper;
+    //ViewFlipper v_flipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         int images[] = {R.drawable.promo1, R.drawable.promo2, R.drawable.promo3};
-        v_flipper = findViewById(R.id.v_flipper);
+        //v_flipper = findViewById(R.id.v_flipper);
 
         for (int i =0; i<images.length; i++){
             fliverImages(images[i]);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (mUser != null) {
+       /* if (mUser != null) {
             // User is signed in
             String userlogin = mUser.getEmail();
             Toast.makeText(MainActivity.this,"user login is : "+userlogin,Toast.LENGTH_SHORT).show();
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // No user is signed in
             sendToLogin();
-        }
+        }*/
 
     }
 
@@ -137,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(images);
 
-        v_flipper.addView(imageView);
+       /* v_flipper.addView(imageView);
         v_flipper.setFlipInterval(4000);
         v_flipper.setAutoStart(true);
 
         v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
-        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
+        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);*/
 
     }
 
