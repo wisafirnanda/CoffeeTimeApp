@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.coffeetimeapp.model.Warkop;
+import com.coffeetimeapp.model.WarkopTest;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -46,7 +46,7 @@ public class TambahWarkopActivity extends Activity {
         String waktu_buka = waktu_bukaText.getText().toString();
         String menu = menuText.getText().toString();
 
-        ref.child("warkop").push().setValue(new Warkop(nama_warkop, nama_pemilik, cp_warkop,alamat_warkop, waktu_buka, menu)).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+        ref.child("warkop").push().setValue(new WarkopTest(nama_warkop, nama_pemilik, cp_warkop,alamat_warkop, waktu_buka, menu)).addOnSuccessListener(this, new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Intent intent = new Intent(TambahWarkopActivity.this, MainActivity.class);

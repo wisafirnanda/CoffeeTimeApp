@@ -12,19 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.coffeetimeapp.model.WarkopForList;
+import com.coffeetimeapp.adapter.ListWarkopAdapter;
+import com.coffeetimeapp.model.Warkop;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ListWarkopActivity extends AppCompatActivity {
 
     private FirebaseDatabase checkindatabase;
     private FirebaseDatabase warkopdatabase;
-    private FirebaseRecyclerAdapter<WarkopForList, UserviewHolder> adapter;
+    private ListWarkopAdapter adapter;
     private TextView Notifnull;
     private RecyclerView recyclerView;
+    private ArrayList<Warkop> listwarkop = new ArrayList<>();
+    private Warkop warkopmodel;
 
     public ListWarkopActivity() {
 
@@ -36,43 +44,14 @@ public class ListWarkopActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_warkop);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(manager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-
-        Query query = FirebaseDatabase.getInstance().getReference().child("warkop").limitToLast(50);
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<WarkopForList>()
-                .setQuery(query, WarkopForList.class)
-                .setLifecycleOwner(this)
-                .build();
-        adapter = new FirebaseRecyclerAdapter<WarkopForList, UserviewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull UserviewHolder holder, int position, @NonNull WarkopForList model) {
-
-                String id_warkop = getRef(position).getKey();
-                Log.e("id_warkop",""+id_warkop);
-                holder.setnama_warkop(model.getNama_warkop());
-                holder.setalamat_warkop(model.getAlamat_warkop());
-
-                Log.e("test","test");
-
-                //final String uid = model.getId();
-            }
-
-            @NonNull
-            @Override
-            public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_warkop, parent, false);
-                return new UserviewHolder(view);
-            }
-        };
+        //recyclerView.setAdapter(adapter);
 
 
+        getListWarkop();
 
-        recyclerView.setAdapter(adapter);
 
-        Log.e("adapter size",""+adapter.getItemCount());
 
 
 
@@ -80,37 +59,61 @@ public class ListWarkopActivity extends AppCompatActivity {
 
     }
 
-
-    public class UserviewHolder extends RecyclerView.ViewHolder {
-        View mView;
-        TextView namawarkop, alamatwarkop;
-
-        public UserviewHolder(View itemView) {
-            super(itemView);
-            mView = itemView;
-            namawarkop = mView.findViewById(R.id.nama_warkop);
-            alamatwarkop = mView.findViewById(R.id.alamat_warkop);
+    private void getListWarkop() {
+        if (listwarkop != null){
+            listwarkop.clear();
         }
+        final ArrayList<String> childdren_listwarkop = new ArrayList<>();
+            FirebaseDatabase.getInstance().getReference().child("warkop").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (final DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        String test = snapshot.getKey();
+                        FirebaseDatabase.getInstance().getReference().child("warkop").child(test).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Log.d("snapshow value",""+snapshot.getValue());
+                                warkopmodel = new Warkop(snapshot.child("alamat_warkop").getValue().toString(),
+                                        snapshot.child("cp_warkop").getValue().toString(),
+                                        snapshot.child("menu").getValue().toString(),
+                                        snapshot.child("nama_pemilik").getValue().toString(),
+                                        snapshot.child("nama_warkop").getValue().toString(),
+                                        snapshot.child("waktu_buka").getValue().toString());
 
-        public void setnama_warkop(String nama_warkop){
-            namawarkop.setText(nama_warkop);
-        }
+                                listwarkop.add(warkopmodel);
 
-        public void setalamat_warkop(String alamat_warkop) {
-            alamatwarkop.setText(alamat_warkop);
-        }
+                                //set to adapter
+                                adapter = new ListWarkopAdapter(ListWarkopActivity.this,listwarkop);
 
+                                recyclerView.setAdapter(adapter);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
     }
+
+
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
+
 
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapter.stopListening();
+
     }
 }
