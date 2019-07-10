@@ -3,7 +3,6 @@ package com.coffeetimeapp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -58,9 +57,6 @@ public class ListWarkopActivity extends AppCompatActivity {
                 @Override
                 protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
                     holder.setnama_warkop(model.getnama_warkop());
-                    holder.setnama_pemilik(model.getnama_pemilik());
-                    holder.setcp_warkop(model.getcp_warkop());
-                    holder.setwaktu_buka(model.getwaktu_buka());
                     holder.setalamat_warkop(model.getalamat_warkop());
 
                     final String uid = model.getId();
@@ -113,15 +109,12 @@ public class ListWarkopActivity extends AppCompatActivity {
 
     public class UserviewHolder extends RecyclerView.ViewHolder {
         View mView;
-        TextView namawarkop, namapemilik, cpwarkop, waktubuka, alamatwarkop;
+        TextView namawarkop, alamatwarkop;
 
         public UserviewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             namawarkop = mView.findViewById(R.id.nama_warkop);
-            namapemilik = mView.findViewById(R.id.nama_pemilik);
-            cpwarkop = mView.findViewById(R.id.cp_warkop);
-            waktubuka = mView.findViewById(R.id.waktu_buka);
             alamatwarkop = mView.findViewById(R.id.alamat_warkop);
         }
 
@@ -129,22 +122,9 @@ public class ListWarkopActivity extends AppCompatActivity {
             namawarkop.setText(nama_warkop);
         }
 
-        public void setnama_pemilik(String nama_pemilik) {
-            namapemilik.setText(nama_pemilik);
-        }
-
-        public void setcp_warkop(String cp_warkop){
-            cpwarkop.setText(cp_warkop);
-        }
-
-        public void setwaktu_buka(String waktu_buka) {
-            waktubuka.setText(waktu_buka);
-        }
-
         public void setalamat_warkop(String alamat_warkop) {
             alamatwarkop.setText(alamat_warkop);
         }
-
 
     }
     @Override
