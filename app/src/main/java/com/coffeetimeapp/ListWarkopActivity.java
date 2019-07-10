@@ -6,12 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.coffeetimeapp.model.Warkop;
+import com.coffeetimeapp.model.WarkopForList;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,7 +22,7 @@ public class ListWarkopActivity extends AppCompatActivity {
 
     private FirebaseDatabase checkindatabase;
     private FirebaseDatabase warkopdatabase;
-    private FirebaseRecyclerAdapter<Warkop, UserviewHolder> adapter;
+    private FirebaseRecyclerAdapter<WarkopForList, UserviewHolder> adapter;
     private TextView Notifnull;
     private RecyclerView recyclerView;
 
@@ -40,71 +41,44 @@ public class ListWarkopActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-        Query query = FirebaseDatabase.getInstance().getReference().child("warkop");
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Warkop>()
-                .setQuery(query, Warkop.class)
+        Query query = FirebaseDatabase.getInstance().getReference().child("warkop").limitToLast(50);
+        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<WarkopForList>()
+                .setQuery(query, WarkopForList.class)
                 .setLifecycleOwner(this)
                 .build();
-        if (this != null) {
-            adapter = new FirebaseRecyclerAdapter<Warkop, UserviewHolder>(options) {
-                @NonNull
-                @Override
-                public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_warkop, parent, false);
-                    return new UserviewHolder(view);
-                }
+        adapter = new FirebaseRecyclerAdapter<WarkopForList, UserviewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull UserviewHolder holder, int position, @NonNull WarkopForList model) {
 
-                @Override
-                protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
-                    holder.setnama_warkop(model.getnama_warkop());
-                    holder.setalamat_warkop(model.getalamat_warkop());
+                String id_warkop = getRef(position).getKey();
+                Log.e("id_warkop",""+id_warkop);
+                holder.setnama_warkop(model.getNama_warkop());
+                holder.setalamat_warkop(model.getAlamat_warkop());
 
-                    final String uid = model.getId();
-                }
-            };
+                Log.e("test","test");
 
-            recyclerView.setAdapter(adapter);
-        }
+                //final String uid = model.getId();
+            }
+
+            @NonNull
+            @Override
+            public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_warkop, parent, false);
+                return new UserviewHolder(view);
+            }
+        };
+
+
+
+        recyclerView.setAdapter(adapter);
+
+        Log.e("adapter size",""+adapter.getItemCount());
+
+
+
 
 
     }
-
-    /* @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_list_warkop, container, false);
-        recyclerView = rootView.findViewById(R.id.listview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        Query query = FirebaseDatabase.getInstance().getReference().child("warkop");
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Warkop>()
-                .setQuery(query, Warkop.class)
-                .setLifecycleOwner(getActivity())
-                .build();
-        if (getActivity() != null) {
-            adapter = new FirebaseRecyclerAdapter<Warkop, UserviewHolder>(options) {
-                @NonNull
-                @Override
-                public UserviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail_warkop, parent, false);
-                    return new UserviewHolder(view);
-                }
-
-                @Override
-                protected void onBindViewHolder(@NonNull final UserviewHolder holder, int position, @NonNull Warkop model) {
-                    holder.setnama_warkop(model.getnama_warkop());
-                    holder.setnama_pemilik(model.getnama_pemilik());
-                    holder.setcp_warkop(model.getcp_warkop());
-                    holder.setwaktu_buka(model.getwaktu_buka());
-                    holder.setalamat_warkop(model.getalamat_warkop());
-
-                    final String uid = model.getId();
-                }
-            };
-        }
-
-        return rootView;
-    }*/
 
 
     public class UserviewHolder extends RecyclerView.ViewHolder {
@@ -131,6 +105,7 @@ public class ListWarkopActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         adapter.startListening();
+
     }
 
     @Override
