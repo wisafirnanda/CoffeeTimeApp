@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.coffeetimeapp.ListWarkopFragment;
+import com.coffeetimeapp.ListWarkopActivity;
 import com.coffeetimeapp.R;
 
 import java.util.LinkedList;
@@ -17,7 +17,7 @@ public class ListWarkopAdapter extends RecyclerView.Adapter<ListWarkopAdapter.It
     private final LinkedList<String> mWordList;
     private final LayoutInflater mInflater;
 
-    public void setClickListener(ListWarkopFragment listWarkopFragment) {
+    public void setClickListener(ListWarkopActivity listWarkopActivity) {
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

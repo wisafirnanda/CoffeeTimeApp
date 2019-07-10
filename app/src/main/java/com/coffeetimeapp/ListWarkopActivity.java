@@ -16,7 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class ListWarkopFragment extends Fragment {
+public class ListWarkopActivity extends Fragment {
 
     private FirebaseDatabase checkindatabase;
     private FirebaseDatabase warkopdatabase;
@@ -24,13 +24,13 @@ public class ListWarkopFragment extends Fragment {
     private TextView Notifnull;
     private RecyclerView recyclerView;
 
-    public ListWarkopFragment() {
+    public ListWarkopActivity() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragmen_list_warkop, container, false);
+        View rootView = inflater.inflate(R.layout.activity_list_warkop, container, false);
         recyclerView = rootView.findViewById(R.id.listview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
@@ -85,7 +85,7 @@ public class ListWarkopFragment extends Fragment {
         }
 
         public void setnama_pemilik(String nama_pemilik) {
-           namapemilik.setText(nama_pemilik);
+            namapemilik.setText(nama_pemilik);
         }
 
         public void setcp_warkop(String cp_warkop){

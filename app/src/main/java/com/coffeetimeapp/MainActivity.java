@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnbiji, btnbubuk, btnkopijadi;
     private FloatingActionButton fab;
 
-    //FIREBASE
+    //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mUserRef;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnbiji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
                 startActivity(intent);
             }
         });
