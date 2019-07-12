@@ -1,25 +1,19 @@
 package com.coffeetimeapp;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coffeetimeapp.adapter.ListWarkopAdapter;
 import com.coffeetimeapp.model.Warkop;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -35,7 +29,6 @@ public class ListWarkopActivity extends AppCompatActivity {
     private Warkop warkopmodel;
 
     public ListWarkopActivity() {
-
     }
 
     @Override
@@ -48,22 +41,14 @@ public class ListWarkopActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         //recyclerView.setAdapter(adapter);
 
-
         getListWarkop();
-
-
-
-
-
-
-
     }
 
     private void getListWarkop() {
         if (listwarkop != null){
             listwarkop.clear();
         }
-        final ArrayList<String> childdren_listwarkop = new ArrayList<>();
+        final ArrayList<String> children_listwarkop = new ArrayList<>();
             FirebaseDatabase.getInstance().getReference().child("warkop").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -73,18 +58,18 @@ public class ListWarkopActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 Log.d("snapshow value",""+snapshot.getValue());
-                                warkopmodel = new Warkop(snapshot.child("alamat_warkop").getValue().toString(),
-                                        snapshot.child("cp_warkop").getValue().toString(),
-                                        snapshot.child("menu").getValue().toString(),
+                                warkopmodel = new Warkop(snapshot.child("nama_warkop").getValue().toString(),
                                         snapshot.child("nama_pemilik").getValue().toString(),
-                                        snapshot.child("nama_warkop").getValue().toString(),
-                                        snapshot.child("waktu_buka").getValue().toString());
+                                        snapshot.child("cp_warkop").getValue().toString(),
+                                        snapshot.child("alamat_warkop").getValue().toString(),
+                                        snapshot.child("waktu_buka").getValue().toString(),
+                                        snapshot.child("menu").getValue().toString(),
+                                        snapshot.getKey());
 
                                 listwarkop.add(warkopmodel);
 
                                 //set to adapter
                                 adapter = new ListWarkopAdapter(ListWarkopActivity.this,listwarkop);
-
                                 recyclerView.setAdapter(adapter);
                             }
 
@@ -98,22 +83,21 @@ public class ListWarkopActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
                 }
             });
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
-
-
     }
 
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    public void detailwarkop(View view) {
 
     }
 }

@@ -1,10 +1,8 @@
 package com.coffeetimeapp;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mUserRef;
     private FirebaseUser mUser;
 
-    //ViewFlipper v_flipper;
+    ViewFlipper v_flipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnbubuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
                 startActivity(intent);
             }
         });
@@ -70,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
         btnkopijadi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
                 startActivity(intent);
             }
         });
 
         int images[] = {R.drawable.promo1, R.drawable.promo2, R.drawable.promo3};
-        //v_flipper = findViewById(R.id.v_flipper);
+        v_flipper = findViewById(R.id.v_flipper);
 
         for (int i =0; i<images.length; i++){
             fliverImages(images[i]);
@@ -137,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(images);
 
-       /* v_flipper.addView(imageView);
+        v_flipper.addView(imageView);
         v_flipper.setFlipInterval(4000);
         v_flipper.setAutoStart(true);
 
         v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
-        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);*/
+        v_flipper.setOutAnimation(this,android.R.anim.slide_out_right);
 
     }
 

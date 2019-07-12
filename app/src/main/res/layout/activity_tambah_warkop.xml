@@ -98,6 +98,38 @@
             android:background="#eee" />
 
         <EditText
+            android:id="@+id/longitude"
+            style="@style/FullWidthEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_password_light"
+            android:drawablePadding="5dp"
+            android:hint="Titik Longitude"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="#eee" />
+
+        <EditText
+            android:id="@+id/latitude"
+            style="@style/FullWidthEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_password_light"
+            android:drawablePadding="5dp"
+            android:hint="Titik Latitude"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="#eee" />
+
+        <EditText
             android:id="@+id/menu"
             style="@style/FullWidthEditText"
             android:layout_width="match_parent"

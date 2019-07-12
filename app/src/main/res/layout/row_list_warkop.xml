@@ -19,14 +19,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/warkopDetailLayout">
 
                 <ImageView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/baru" />
+                    android:src="@drawable/warkop" />
 
                 <TextView
                     android:id="@+id/nama_warkop"
