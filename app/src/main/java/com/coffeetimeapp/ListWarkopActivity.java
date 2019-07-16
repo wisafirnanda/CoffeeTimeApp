@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.coffeetimeapp.adapter.ListWarkopAdapter;
@@ -97,7 +96,4 @@ public class ListWarkopActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void detailwarkop(View view) {
-
-    }
 }

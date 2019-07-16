@@ -64,12 +64,22 @@ public class LoginActivity extends Activity {
                             //like this
                             String email = dataSnapshot.child("email").getValue().toString();
 
+                            int tipeUser = Integer.parseInt(dataSnapshot.child("tipe_user").getValue().toString());
+
+                            switch (tipeUser) {
+                                case 0:
+                                    Intent intent = new Intent(LoginActivity.this, ProfileWarkopActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                case 1:
+                                    Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent2);
+                                    break;
+                            }
+
                             Toast.makeText(LoginActivity.this,"email is "+email,Toast.LENGTH_SHORT).show();
 
-                            //then Go to MainActivity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+
                         }
 
                         @Override

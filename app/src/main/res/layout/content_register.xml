@@ -24,8 +24,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="80dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="50dp"
                     android:gravity="center"
                     android:text="Daftar Akun Baru"
                     android:textSize="25sp"
@@ -99,15 +98,29 @@
                     android:background="#eee" />
 
                 <Button
-                    android:id="@+id/btndaftar"
+                    android:id="@+id/btndaftarclient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="20dp"
                     android:background="@color/colorPrimary"
                     android:foreground="?attr/selectableItemBackground"
-                    android:onClick="registerUserAuth"
-                    android:text="Daftar"
+                    android:onClick="daftarclient"
+                    android:text="Daftar sebagai pengguna"
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btndaftarwarkop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/colorPrimary"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="daftarwarkop"
+                    android:text="Daftar sebagai warung kopi"
                     android:textColor="#fff"
                     android:textStyle="bold" />
 
@@ -117,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_marginEnd="30dp"
+                    android:layout_marginTop="8dp"
                     android:onClick="masuk"
                     android:text="Sudah punya akun? Masuk"
                     android:textColor="@android:color/black"

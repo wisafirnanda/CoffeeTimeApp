@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -121,6 +122,23 @@
             android:drawableLeft="@drawable/ic_password_light"
             android:drawablePadding="5dp"
             android:hint="Titik Latitude"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="#eee" />
+
+        <TextView
+            android:id="@+id/menudialog"
+            style="@style/FullWidthEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_jenis_warkop_light"
+            android:drawablePadding="5dp"
+            android:hint="Menu"
+            android:onClick="menuDialog"/>
 
         <View
             android:layout_width="match_parent"

@@ -7,21 +7,9 @@ public class Warkop {
     String alamat_warkop;
     String waktu_buka;
     String menu;
-
     String key;
 
     private Double longitude, latitude;
-
-    public Warkop(String nama_warkop, String nama_pemilik, String cp_warkop, String alamat_warkop, String waktu_buka, String menu) {
-        this.nama_warkop = nama_warkop;
-        this.nama_pemilik = nama_pemilik;
-        this.cp_warkop = cp_warkop;
-        this.alamat_warkop = alamat_warkop;
-        this.waktu_buka = waktu_buka;
-        this.menu = menu;
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
 
     public Warkop(String nama_warkop, String nama_pemilik, String cp_warkop, String alamat_warkop, String waktu_buka, String menu, String key) {
         this.nama_warkop = nama_warkop;
@@ -30,9 +18,9 @@ public class Warkop {
         this.alamat_warkop = alamat_warkop;
         this.waktu_buka = waktu_buka;
         this.menu = menu;
-        this.key = key;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.key= key;
     }
 
     public String getNama_warkop() {
