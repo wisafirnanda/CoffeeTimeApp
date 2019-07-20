@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".WarkopActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +29,7 @@
         <activity android:name=".TambahWarkopActivity" />
         <activity android:name=".ListWarkopActivity" />
         <activity android:name=".ProfileWarkopActivity" />
+        <activity android:name=".SplashScreenActivity" />
     </application>
 
 </manifest>

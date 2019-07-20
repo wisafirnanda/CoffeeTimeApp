@@ -19,7 +19,7 @@ public class ProfileWarkopActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_warkop);
+        //setContentView(R.layout.activity_profile_warkop);
 
         nama = findViewById(R.id.nama);
         email = findViewById(R.id.email);

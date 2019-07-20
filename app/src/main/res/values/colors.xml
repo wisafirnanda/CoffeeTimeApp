@@ -43,10 +43,6 @@
 
     <color name="bg_list_warkop">#f1f5f8</color>
 
-    <!--list warkop-->
-    <color name="PrimaryListWarkop1">#ff9903</color>
-    <color name="ecommerce9colorPrimaryDark">#f27d04</color>
-    <color name="ecommerce9colorAccent">#ff9903</color>
-    <color name="fontGray">#bebebe</color>
-    <color name="PrimaryListWarkop">#ff9903</color>
+    <color name="colorNavigationIcon">#dae9f6</color>
+    <color name="colorNavigationText">#ffffff</color>
 </resources>

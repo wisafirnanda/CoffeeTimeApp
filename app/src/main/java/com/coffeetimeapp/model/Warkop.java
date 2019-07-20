@@ -11,7 +11,7 @@ public class Warkop {
 
     private Double longitude, latitude;
 
-    public Warkop(String nama_warkop, String nama_pemilik, String cp_warkop, String alamat_warkop, String waktu_buka, String menu, String key) {
+    public Warkop(String nama_warkop, String nama_pemilik, String cp_warkop, String alamat_warkop, String waktu_buka, String key) {
         this.nama_warkop = nama_warkop;
         this.nama_pemilik = nama_pemilik;
         this.cp_warkop = cp_warkop;

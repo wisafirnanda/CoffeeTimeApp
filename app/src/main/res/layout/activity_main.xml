@@ -107,5 +107,4 @@
         android:src="@drawable/ic_add_white"
         app:fabSize="normal" />
 
-
 </LinearLayout>

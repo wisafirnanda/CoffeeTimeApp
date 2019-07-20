@@ -2,103 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="20dp">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/nama_kopi"
+        android:hint="Nama Kopi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:background="@android:drawable/editbox_background_normal"/>
 
-        <EditText
-            android:id="@+id/menu1"
-            android:hint="Menu 1"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-        <EditText
-            android:id="@+id/harga1"
-            android:hint="Harga"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+    <EditText
+        android:id="@+id/jenis_kopi"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <EditText
-            android:id="@+id/menu2"
-            android:hint="Menu 2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-        <EditText
-            android:id="@+id/harga2"
-            android:hint="Harga"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:hint="Jenis Kopi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:background="@android:drawable/editbox_background_normal"/>
 
-        <EditText
-            android:id="@+id/menu3"
-            android:hint="Menu 3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-        <EditText
-            android:id="@+id/harga3"
-            android:hint="Harga"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/harga_kopi"
+        android:layout_marginBottom="10dp"
+        android:hint="Harga Kopi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:background="@android:drawable/editbox_background_normal"/>
 
-        <EditText
-            android:id="@+id/menu4"
-            android:hint="Menu 2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-        <EditText
-            android:id="@+id/harga4"
-            android:hint="Harga"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@android:drawable/editbox_background_normal"/>
-
-    </LinearLayout>
 </LinearLayout>

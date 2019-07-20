@@ -62,7 +62,6 @@ public class ListWarkopActivity extends AppCompatActivity {
                                         snapshot.child("cp_warkop").getValue().toString(),
                                         snapshot.child("alamat_warkop").getValue().toString(),
                                         snapshot.child("waktu_buka").getValue().toString(),
-                                        snapshot.child("menu").getValue().toString(),
                                         snapshot.getKey());
 
                                 listwarkop.add(warkopmodel);

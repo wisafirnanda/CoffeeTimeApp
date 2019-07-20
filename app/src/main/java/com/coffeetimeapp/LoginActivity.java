@@ -68,7 +68,7 @@ public class LoginActivity extends Activity {
 
                             switch (tipeUser) {
                                 case 0:
-                                    Intent intent = new Intent(LoginActivity.this, ProfileWarkopActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, TambahWarkopActivity.class);
                                     startActivity(intent);
                                     break;
                                 case 1:

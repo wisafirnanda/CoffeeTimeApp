@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/warkop_menu"
+        android:title="@string/menu"
+        android:icon="@drawable/ic_menu"/>
+
+    <item
+        android:id="@+id/warkop_pesanan"
+        android:title="@string/pesanan"
+        android:icon="@drawable/ic_pesanan"/>
+
+    <item
+        android:id="@+id/warkop_profil"
+        android:title="@string/profil"
+        android:icon="@drawable/ic_profile"/>
+
+</menu>
