@@ -7,27 +7,27 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.coffeetimeapp.R;
-import com.coffeetimeapp.model.Pesanan;
+import com.coffeetimeapp.model.PesananWarkop;
 
 import java.util.ArrayList;
 
-public class PesananAdapter extends RecyclerView.Adapter<PesananAdapter.PesananViewHolder>  {
+public class PesananWarkopAdapter extends RecyclerView.Adapter<PesananWarkopAdapter.PesananViewHolder>  {
 
-    private ArrayList<Pesanan> dataList;
+    private ArrayList<PesananWarkop> dataList;
 
-    public PesananAdapter(ArrayList<Pesanan> dataList) {
+    public PesananWarkopAdapter(ArrayList<PesananWarkop> dataList) {
         this.dataList = dataList;
     }
 
     @Override
-    public PesananAdapter.PesananViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PesananWarkopAdapter.PesananViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.row_list_pesanan, parent, false);
-        return new PesananAdapter.PesananViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.row_list_pesanan_warkop, parent, false);
+        return new PesananWarkopAdapter.PesananViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PesananAdapter.PesananViewHolder holder, int position) {
+    public void onBindViewHolder(PesananWarkopAdapter.PesananViewHolder holder, int position) {
         //holder.id_kopi.setText(dataList.get(position).getId_kopi());
         holder.nama_user.setText(dataList.get(position).getNama_user());
         holder.nama_kopi.setText(dataList.get(position).getNama_kopi());

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.coffeetimeapp.client.ListWarkopActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setBackgroundResource(images);
 
         v_flipper.addView(imageView);
-        v_flipper.setFlipInterval(4000);
+        v_flipper.setFlipInterval(3000);
         v_flipper.setAutoStart(true);
 
         v_flipper.setInAnimation(this,android.R.anim.slide_in_left);
@@ -151,7 +152,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void terbaru(View view) {
-        Intent startIntent = new Intent(MainActivity.this, TambahWarkopActivity.class);
-        startActivity(startIntent);
+        Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
+        startActivity(intent);
+    }
+
+    public void terfavorit(View view) {
+        Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
+        startActivity(intent);
+    }
+
+    public void terlaris(View view) {
+        Intent intent = new Intent(MainActivity.this, ListWarkopActivity.class);
+        startActivity(intent);
     }
 }

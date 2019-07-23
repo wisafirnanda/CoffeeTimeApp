@@ -1,4 +1,4 @@
-package com.coffeetimeapp;
+package com.coffeetimeapp.warkop;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.coffeetimeapp.R;
 import com.coffeetimeapp.model.Warkop;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

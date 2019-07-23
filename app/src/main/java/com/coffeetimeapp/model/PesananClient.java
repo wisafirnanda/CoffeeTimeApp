@@ -1,7 +1,6 @@
 package com.coffeetimeapp.model;
 
-public class Pesanan {
-
+public class PesananClient {
     private String id_pemesanan;
     private String id_kopi;
     private String nama_user;
@@ -10,7 +9,7 @@ public class Pesanan {
     private String jumlah_kopi;
     private String total_harga;
 
-    public Pesanan (String nama_user, String nama_kopi, String jenis_kopi, String jumlah_kopi, String total_harga) {
+    public PesananClient (String nama_user, String nama_kopi, String jenis_kopi, String jumlah_kopi, String total_harga) {
         //this.id_kopi = id_kopi;
         this.nama_user = nama_user;
         this.nama_kopi = nama_kopi;
@@ -74,5 +73,4 @@ public class Pesanan {
     public void setTotal_harga(String total_harga) {
         this.total_harga = total_harga;
     }
-
 }

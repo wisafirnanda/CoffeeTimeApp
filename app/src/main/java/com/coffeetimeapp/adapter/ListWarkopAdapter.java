@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.coffeetimeapp.DetailWarkopActivity;
+import com.coffeetimeapp.client.DetailWarkopActivity;
 import com.coffeetimeapp.R;
 import com.coffeetimeapp.model.Warkop;
 

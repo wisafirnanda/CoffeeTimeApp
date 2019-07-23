@@ -38,7 +38,8 @@
                     android:layout_marginTop="8dp"
                     android:text="Cut Nun Warkop"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"/>
 
                 <View
                     android:id="@+id/view1"

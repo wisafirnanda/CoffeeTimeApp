@@ -1,4 +1,4 @@
-package com.coffeetimeapp;
+package com.coffeetimeapp.warkop;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,6 +6,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.coffeetimeapp.R;
 
 public class WarkopActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package com.coffeetimeapp;
+package com.coffeetimeapp.warkop;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.coffeetimeapp.adapter.MenuKopiAdapter;
+import com.coffeetimeapp.R;
+import com.coffeetimeapp.adapter.MenuWarkopAdapter;
 import com.coffeetimeapp.model.Kopi;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class MenuFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private MenuKopiAdapter adapter;
+    private MenuWarkopAdapter adapter;
     private ArrayList<Kopi> kopiArrayList;
 
     private FloatingActionButton tambah_menu;
@@ -46,7 +47,7 @@ public class MenuFragment extends Fragment {
 
         addData();
 
-        adapter = new MenuKopiAdapter(kopiArrayList);
+        adapter = new MenuWarkopAdapter(kopiArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

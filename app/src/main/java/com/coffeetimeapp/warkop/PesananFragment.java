@@ -1,4 +1,4 @@
-package com.coffeetimeapp;
+package com.coffeetimeapp.warkop;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,16 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.coffeetimeapp.adapter.PesananAdapter;
-import com.coffeetimeapp.model.Pesanan;
+import com.coffeetimeapp.R;
+import com.coffeetimeapp.adapter.PesananWarkopAdapter;
+import com.coffeetimeapp.model.PesananWarkop;
 
 import java.util.ArrayList;
 
 public class PesananFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private PesananAdapter adapter;
-    private ArrayList<Pesanan> pesananArrayList;
+    private PesananWarkopAdapter adapter;
+    private ArrayList<PesananWarkop> pesananWarkopArrayList;
 
     @Nullable
     @Override
@@ -30,7 +31,7 @@ public class PesananFragment extends Fragment {
 
         addData();
 
-        adapter = new PesananAdapter(pesananArrayList);
+        adapter = new PesananWarkopAdapter(pesananWarkopArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -39,8 +40,8 @@ public class PesananFragment extends Fragment {
     }
 
     void addData(){
-        pesananArrayList = new ArrayList<>();
-        pesananArrayList.add(new Pesanan("Wisa", "Sanger", "Kopi jadi", "x 2", "10.000"));
-        pesananArrayList.add(new Pesanan("Nanda", "Arabica Gayo", "Bubuk", "x 1", "30.000"));
+        pesananWarkopArrayList = new ArrayList<>();
+        pesananWarkopArrayList.add(new PesananWarkop("Wisa", "Sanger", "Kopi jadi", "x 2", "10.000"));
+        pesananWarkopArrayList.add(new PesananWarkop("Nanda", "Arabica Gayo", "Bubuk", "x 1", "30.000"));
     }
 }

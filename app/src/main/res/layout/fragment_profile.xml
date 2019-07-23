@@ -199,7 +199,8 @@
             android:foreground="?attr/selectableItemBackground"
             android:text="logout"
             android:textColor="#fff"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="Logout"/>
 
     </LinearLayout>
 </ScrollView>
